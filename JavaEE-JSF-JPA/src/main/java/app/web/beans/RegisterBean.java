@@ -33,7 +33,7 @@ public class RegisterBean extends BaseBean {
         this.user = new UserRegisterBindingModel();
     }
 
-    public void register( ) throws IOException {
+    public void register( ) {
         if (!user.getPassword().equals(user.getConfirmPassword())){
             return;
         }
@@ -41,7 +41,7 @@ public class RegisterBean extends BaseBean {
         user.setPassword(DigestUtils.sha3_256Hex(user.getPassword()));
         this.userService.save(this.modelMapper.map(user, UserServiceModel.class));
 
-        redirect("/login");
+        this.redirect("/login");
     }
 
     public UserRegisterBindingModel getUser() {

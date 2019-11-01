@@ -4,7 +4,6 @@ import app.domain.models.binding.UserLoginBindingModel;
 import app.domain.models.service.UserServiceModel;
 import app.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.modelmapper.ModelMapper;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -16,7 +15,6 @@ import java.io.IOException;
 @RequestScoped
 public class LoginBean extends BaseBean {
     private UserService userService;
-    private ModelMapper modelMapper;
     private UserLoginBindingModel user;
 
     public LoginBean() {
@@ -32,17 +30,17 @@ public class LoginBean extends BaseBean {
         this.user = new UserLoginBindingModel();
     }
 
-    public void login() throws IOException {
+    public void login() {
         UserServiceModel user = this.userService
                 .findUserByUsernameAndPassword(this.user.getUsername(), DigestUtils.sha3_256Hex(this.user.getPassword()));
 
         if (user == null) {
-            this.redirect("login");
+            this.redirect("/login");
         }
 
         this.saveUserToSession(user.getUsername(), user.getUsername());
 
-        this.redirect("home");
+        this.redirect("/home");
     }
 
     public UserLoginBindingModel getUser() {
