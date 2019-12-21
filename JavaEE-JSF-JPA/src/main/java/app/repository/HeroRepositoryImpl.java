@@ -1,6 +1,6 @@
 package app.repository;
 
-import app.domain.entities.JobApplication;
+import app.domain.entities.Hero;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -15,30 +15,39 @@ public class JobApplicationRepositoryImpl implements JobApplicationRepository {
     }
 
     @Override
-    public void save(JobApplication jobApplication) {
+    public void save(Hero hero) {
         this.entityManager.getTransaction().begin();
-        this.entityManager.persist(jobApplication);
+        this.entityManager.persist(hero);
         this.entityManager.getTransaction().commit();
     }
 
     @Override
-    public List<JobApplication> findAll() {
+    public List<Hero> findAll() {
         this.entityManager.getTransaction().begin();
-        List<JobApplication> jobs = this.entityManager
-                .createQuery("SELECT j FROM JobApplication j", JobApplication.class)
+        List<Hero> jobs = this.entityManager
+                .createQuery("SELECT j FROM Hero j", Hero.class)
                 .getResultList();
         this.entityManager.getTransaction().commit();
         return jobs;
     }
 
     @Override
-    public JobApplication findByI(String id) {
+    public Hero findByI(String id) {
         this.entityManager.getTransaction().begin();
-        JobApplication job = this.entityManager
-                .createQuery("SELECT j FROM JobApplication j WHERE j.id LIKE :id", JobApplication.class)
+        Hero job = this.entityManager
+                .createQuery("SELECT j FROM Hero j WHERE j.id LIKE :id", Hero.class)
                 .setParameter("id", id)
                 .getSingleResult();
         this.entityManager.getTransaction().commit();
         return job;
+    }
+
+    @Override
+    public void delete(String id) {
+        this.entityManager.getTransaction().begin();
+        this.entityManager
+                .createQuery("DELETE FROM Hero j WHERE j.id = :id")
+                .setParameter("id", id);
+        this.entityManager.getTransaction().commit();
     }
 }

@@ -1,8 +1,8 @@
 package app.web.beans;
 
-import app.domain.entities.Sector;
-import app.domain.models.binding.JobCreateBindingModel;
-import app.domain.models.service.JobApplicationServiceModel;
+import app.domain.entities.Claz;
+import app.domain.models.binding.HeroCreateBindingModel;
+import app.domain.models.service.HeroServiceModel;
 import app.service.JobApplicationService;
 import org.modelmapper.ModelMapper;
 
@@ -15,7 +15,7 @@ import javax.inject.Named;
 @RequestScoped
 public class JobCreateBean extends BaseBean {
 
-    private JobCreateBindingModel jobCreateBindingModel;
+    private HeroCreateBindingModel heroCreateBindingModel;
     private JobApplicationService jobApplicationService;
     private ModelMapper modelMapper;
 
@@ -30,29 +30,29 @@ public class JobCreateBean extends BaseBean {
 
     @PostConstruct
     public void init(){
-        this.jobCreateBindingModel = new JobCreateBindingModel();
+        this.heroCreateBindingModel = new HeroCreateBindingModel();
     }
 
     public void create(){
-        JobApplicationServiceModel model = this.modelMapper.map(this.jobCreateBindingModel, JobApplicationServiceModel.class);
-        Sector sector = null;
+        HeroServiceModel model = this.modelMapper.map(this.heroCreateBindingModel, HeroServiceModel.class);
+        Claz claz = null;
 
         try {
-            sector = Sector.valueOf(this.jobCreateBindingModel.getSector().toUpperCase());
+            claz = Claz.valueOf(this.heroCreateBindingModel.getSector().toUpperCase());
         } catch (Exception e) {
             this.redirect("/add-job");
         }
-        model.setSector(sector);
+        model.setClaz(claz);
 
         this.jobApplicationService.save(model);
         this.redirect("/home");
     }
 
-    public JobCreateBindingModel getJobCreateBindingModel() {
-        return jobCreateBindingModel;
+    public HeroCreateBindingModel getHeroCreateBindingModel() {
+        return heroCreateBindingModel;
     }
 
-    public void setJobCreateBindingModel(JobCreateBindingModel jobCreateBindingModel) {
-        this.jobCreateBindingModel = jobCreateBindingModel;
+    public void setHeroCreateBindingModel(HeroCreateBindingModel heroCreateBindingModel) {
+        this.heroCreateBindingModel = heroCreateBindingModel;
     }
 }
