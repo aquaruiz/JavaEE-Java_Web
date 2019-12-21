@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="20ce84ee-7993-4e69-bc38-cf0720fca271" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/ConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/ConnectionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/RequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/StartUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/StartUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/WebConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/WebConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/StartUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/StartUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/WebConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/WebConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/JavaEE-JSF-JPA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/JavaEE-JSF-JPA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/config/ApplicationBeanConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/config/ApplicationBeanConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/entities/Claz.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/entities/Claz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/entities/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/entities/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/binding/HeroCreateBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/binding/HeroCreateBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/binding/UserRegisterBindingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/binding/UserRegisterBindingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/service/HeroServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/service/HeroServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/service/UserServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/domain/models/service/UserServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/repository/HeroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/repository/HeroRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/repository/HeroRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/repository/HeroRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/service/HeroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/service/HeroService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/service/HeroServiceModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/service/HeroServiceModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/BaseBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/BaseBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/HeroCreateBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/HeroCreateBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/HeroListBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/HeroListBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/LoginBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/LoginBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/LogoutBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/web/beans/LogoutBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/create-hero.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/create-hero.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/home.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/home.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/index.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/login.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/login.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/register.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/register.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/footer.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/footer.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/guest-navbar.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/guest-navbar.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/head.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/head.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/user-navbar.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/user-navbar.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jsf-example/src/main/webapp/beee.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../jsf-example/src/main/webapp/beee.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/softuni.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/softuni.xhtml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1VIteBLhGzyQH6uUaYDnDXZ1Nx4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20ce84ee-7993-4e69-bc38-cf0720fca271" name="Default Changelist" comment="" />
+      <created>1576952529635</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576952529635</updated>
+      <workItem from="1576952531186" duration="128000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576952656597">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1576952656597" />
+  </component>
+</project>
