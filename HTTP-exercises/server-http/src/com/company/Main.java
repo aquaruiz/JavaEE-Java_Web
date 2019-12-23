@@ -3,13 +3,20 @@ package com.company;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
         ServerSocket serverSocket = new ServerSocket(8007);
+
+        String serverPath =
+                "/media/aquariuz/Local Disk/Courses/JavaEE - Java Web/HTTP-exercises/server-http/src/resources";
+//                "src" + System.lineSeparator() +
+//                "resources";
 
         while (true) {
             try {
@@ -22,6 +29,7 @@ public class Main {
                 StringBuilder raw = new StringBuilder();
                 raw.append("" + line);
                 System.out.println(line);
+                String fileName = line.split(" ")[1];
                 boolean isPost = line.startsWith("POST");
                 int contentLength = 0;
                 while (!(line = in.readLine()).equals("")) {
@@ -46,10 +54,20 @@ public class Main {
                 System.out.println();
                 System.out.println(body);
                 // send response
-                out.write("HTTP/1.1 200 OK\r\n");
-                out.write("Content-type: text/plain\r\n");
+                out.write("HTTP/1.1 301 Moved Permanently\r\n");
+//                out.write("HTTP/1.1 200 OK\r\n");
+                out.write("Content-type: text/html\r\n");
+
+                out.write("Location: /pesho.html\r\n");
+//                out.write("Content-Disposition: attachment; filename="+ fileName +"\r\n");
+//                out.write("Content-Length: "+
+//                        new File(serverPath+fileName).length() +
+//                        "\r\n");
+
                 out.write("\r\n");
-                out.write("<h1>HELLO</h1>");
+//                List<String> content = Files.readAllLines(Paths.get(serverPath + fileName));
+//                out.write(String.join("", content));
+
                 //
                 // do not in.close();
                 out.flush();
