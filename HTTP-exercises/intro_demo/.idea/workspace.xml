@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20ce84ee-7993-4e69-bc38-cf0720fca271" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../server-http/src/resources/pesho.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/ConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/ConnectionHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/RequestHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/out/production/Javache-Web-Server/javache/Server.class" afterDir="false" />
@@ -11,6 +12,9 @@
       <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/StartUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/StartUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/WebConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTTP-Protocol-Server-Exercises/src/javache/WebConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-http/out/production/server-http/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../server-http/out/production/server-http/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server-http/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server-http/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/JavaEE-JSF-JPA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/JavaEE-JSF-JPA.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/config/ApplicationBeanConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/java/app/config/ApplicationBeanConfiguration.java" afterDir="false" />
@@ -41,6 +45,14 @@
       <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/guest-navbar.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/guest-navbar.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/head.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/head.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/user-navbar.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaEE-JSF-JPA/src/main/webapp/views/templates/user-navbar.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/.idea/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_HTTP-exercises/intro_demo/intro_demo.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../jsf-example/src/main/webapp/beee.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../jsf-example/src/main/webapp/beee.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/softuni.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../../tstjsf/src/main/webapp/softuni.xhtml" afterDir="false" />
@@ -96,6 +108,7 @@
       <updated>1576952529635</updated>
       <workItem from="1576952660613" duration="2783000" />
       <workItem from="1576957635937" duration="6000" />
+      <workItem from="1577082687807" duration="634000" />
     </task>
     <servers />
   </component>

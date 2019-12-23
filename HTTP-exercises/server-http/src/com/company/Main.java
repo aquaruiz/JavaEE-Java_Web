@@ -54,19 +54,31 @@ public class Main {
                 System.out.println();
                 System.out.println(body);
                 // send response
-                out.write("HTTP/1.1 301 Moved Permanently\r\n");
-//                out.write("HTTP/1.1 200 OK\r\n");
-                out.write("Content-type: text/html\r\n");
 
-                out.write("Location: /pesho.html\r\n");
+                if (fileName.contains("favicon")) {
+                    continue;
+                }
+
+                try {
+                    List<String> content = Files
+                            .readAllLines(Paths
+                                    .get(serverPath + fileName));
+                    out.write("HTTP/1.1 200 OK\r\n");
+                    out.write("Content-type: text/html\r\n");
+                    out.write("\r\n");
+
+                    out.write(String.join("", content));
+                } catch (IOException e) {
+                    out.write("HTTP/1.1 301 Moved Permanently\r\n");
+                    out.write("Content-type: text/html\r\n");
+
+                    out.write("Location: /pesho.html\r\n");
 //                out.write("Content-Disposition: attachment; filename="+ fileName +"\r\n");
 //                out.write("Content-Length: "+
 //                        new File(serverPath+fileName).length() +
 //                        "\r\n");
-
-                out.write("\r\n");
-//                List<String> content = Files.readAllLines(Paths.get(serverPath + fileName));
-//                out.write(String.join("", content));
+                    out.write("\r\n");
+                }
 
                 //
                 // do not in.close();
