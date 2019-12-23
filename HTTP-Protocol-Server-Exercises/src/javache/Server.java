@@ -14,6 +14,10 @@ public class Server {
     private ServerSocket server;
     private int port;
 
+    public Server(int serverPort) {
+        this.port = serverPort;
+    }
+
     public void run() throws IOException  {
         this.server = new ServerSocket(this.port);
         this.server.setSoTimeout(SOCKET_TIMEOUT_MILLISECONDS);
