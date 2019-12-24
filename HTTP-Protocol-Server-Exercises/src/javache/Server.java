@@ -6,13 +6,13 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.FutureTask;
 
-import static javache.WebConstants.SOCKET_TIMEOUT_MILLISECONDS;
+import static javache.WebConstants.*;
 
 public class Server {
     // connection controller
 
+    private final int port;
     private ServerSocket server;
-    private int port;
 
     public Server(int serverPort) {
         this.port = serverPort;
@@ -20,6 +20,8 @@ public class Server {
 
     public void run() throws IOException  {
         this.server = new ServerSocket(this.port);
+        System.out.println(LISTENING_MESSAGE + this.port);
+
         this.server.setSoTimeout(SOCKET_TIMEOUT_MILLISECONDS);
         long timeouts = 0;
 
@@ -27,11 +29,15 @@ public class Server {
             try (Socket clientSocket = this.server.accept()) {
                 clientSocket.setSoTimeout(SOCKET_TIMEOUT_MILLISECONDS);
 
-                ConnectionHandler connectionHandler = new ConnectionHandler(clientSocket, new RequestHandler());
+                ConnectionHandler connectionHandler = new ConnectionHandler(
+                        clientSocket,
+                        new RequestHandler()
+                );
+
                 FutureTask<?> task = new FutureTask<>(connectionHandler, null);
                 task.run();
             } catch (SocketTimeoutException e) {
-                System.out.printf("Socket TimeOut Exception No %d has been just caught.%n", ++timeouts);
+                System.out.printf(TIMEOUT_EXCEPTION_MESSAGE, ++timeouts);
             }
         }
     }

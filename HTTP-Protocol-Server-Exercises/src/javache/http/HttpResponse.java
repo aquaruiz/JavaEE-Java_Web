@@ -1,9 +1,9 @@
 package javache.http;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface HttpResponse {
-    HashMap<String, String> getHeaders();
+    Map<String, String> getHeaders();
 
     int getStatusCode();
 

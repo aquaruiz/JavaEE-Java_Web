@@ -12,6 +12,7 @@ public final class Reader {
         BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder result = new StringBuilder();
 
+        // read byte by byte
         while (buffer.ready()){
             result.append((char) buffer.read());
         }

@@ -15,7 +15,8 @@ public class RequestHandler {
     private HttpRequest httpRequest;
     private HttpResponse httpResponse;
 
-    protected RequestHandler () {}
+    protected RequestHandler() {
+    }
 
     public byte[] handleRequest(String requestContent) {
         this.httpRequest = new HttpRequestImpl(requestContent);
@@ -27,24 +28,30 @@ public class RequestHandler {
 
     private void constructHttpResponse() {
         try {
-            File file = new File("src/resources" + this.httpRequest.getRequestUrl());
+            File file;
+
+            if (this.httpRequest.isResource()) {
+                file = new File("src/resources/assets" + this.httpRequest.getRequestUrl());
+            } else {
+                file = new File("src/resources/pages" + this.httpRequest.getRequestUrl() + ".html");
+            }
 
             for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
                 this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
             }
 
             this.httpResponse.setStatusCode(WebConstants.OK);
-
             this.addMimeType();
 
             this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
-
         } catch (IOException e) {
             this.httpResponse = new HttpResponseImpl();
-            File file = new File("src/resources/not-found.html");
+            File file = new File("src/resources/pages/not-found.html");
+
             for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
                 this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
             }
+
             try {
                 this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
                 this.httpResponse.setStatusCode(WebConstants.NOT_FOUND);

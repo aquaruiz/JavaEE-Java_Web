@@ -12,8 +12,8 @@ public class ConnectionHandler extends Thread {
     private RequestHandler requestHandler;
     private Socket clientSocket;
 
-    private InputStream clientSocketInputStream;
-    private OutputStream clientSocketOutputStream;
+    private InputStream clientSocketInputStream; // Request Input Stream
+    private OutputStream clientSocketOutputStream; // Response Output Stream
 
     public ConnectionHandler(Socket clientSocket, RequestHandler requestHandler) {
         this.initializeConnection(clientSocket);
@@ -33,6 +33,8 @@ public class ConnectionHandler extends Thread {
     @Override
     public void run() {
         try {
+
+            // TODO add endless loop
             String requestContent = Reader.readAllLines(this.clientSocketInputStream);
             byte[] responseContent = this.requestHandler.handleRequest(requestContent);
             Writer.writeBytes(responseContent, this.clientSocketOutputStream);
