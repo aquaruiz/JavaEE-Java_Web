@@ -27,38 +27,44 @@ public class RequestHandler {
     }
 
     private void constructHttpResponse() {
-        try {
-            File file;
+//        try {
+        File file;
 
-            if (this.httpRequest.isResource()) {
-                file = new File("src/resources/assets" + this.httpRequest.getRequestUrl());
-            } else {
-                file = new File("src/resources/pages" + this.httpRequest.getRequestUrl() + ".html");
-            }
-
-            for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
-                this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
-            }
-
-            this.httpResponse.setStatusCode(WebConstants.OK);
-            this.addMimeType();
-
-            this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
-        } catch (IOException e) {
-            this.httpResponse = new HttpResponseImpl();
-            File file = new File("src/resources/pages/not-found.html");
-
-            for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
-                this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
-            }
-
-            try {
-                this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
-                this.httpResponse.setStatusCode(WebConstants.NOT_FOUND);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+        if (this.httpRequest.isResource()) {
+            file = new File("src/resources/assets" + this.httpRequest.getRequestUrl());
+        } else {
+            file = new File("src/resources/pages" + this.httpRequest.getRequestUrl() + ".html");
         }
+
+        this.httpResponse.setStatusCode(200);
+        this.httpResponse.addHeader("Content-Type", "text/html");
+
+        
+        //
+//            for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
+//                this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
+//            }
+//
+//            this.httpResponse.setStatusCode(WebConstants.OK);
+//            this.addMimeType();
+//
+//            this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
+//            System.out.println();
+//        } catch (IOException e) {
+//            this.httpResponse = new HttpResponseImpl();
+//            File file = new File("src/resources/pages/not-found.html");
+//
+//            for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
+//                this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
+//            }
+//
+//            try {
+//                this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
+//                this.httpResponse.setStatusCode(WebConstants.NOT_FOUND);
+//            } catch (IOException e1) {
+//                e1.printStackTrace();
+//            }
+//        }
     }
 
     private void addMimeType() {
@@ -68,6 +74,8 @@ public class RequestHandler {
             this.httpResponse.addHeader("Content-Type", "multipart");
         } else if (type.equals("jpg") || type.equals("jpeg") || type.equals("png")) {
             this.httpResponse.addHeader("Content-Type", "image/png");
+        } else {
+            this.httpResponse.addHeader("Content-Type", "text/html");
         }
     }
 }

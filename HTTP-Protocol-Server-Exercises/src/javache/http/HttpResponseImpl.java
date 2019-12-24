@@ -26,11 +26,10 @@ public class HttpResponseImpl implements HttpResponse {
     }
 
     public byte[] getBytes() {
-        byte[] bytes = new byte[2 + this.content.length + this.headers.size()];
-        bytes[0] = Byte.parseByte(String.format("%s %d\r\n", "HTTP/1.1", this.statusCode));
-
         StringBuilder headerBytes = new StringBuilder();
+        headerBytes.append(String.format("%s %d %s\r\n", "HTTP/1.1", this.statusCode, "OK"));
 
+        // if initial headers - add
         for (Map.Entry<String, String> kvp : this.headers.entrySet()) {
             headerBytes
                     .append(
@@ -43,24 +42,27 @@ public class HttpResponseImpl implements HttpResponse {
 
         headerBytes
                 .append(String.format("Date: %s", new Date()))
-                .append(System.lineSeparator());
-        headerBytes
+                .append(System.lineSeparator())
+                .append("Name: Petia")
+                .append(System.lineSeparator())
                 .append("Server: MyJavache/--1.0.0")
+                .append(System.lineSeparator())
                 .append(System.lineSeparator());
-        headerBytes
-                .append(System.lineSeparator());
+
+        byte[] bytes = new byte[this.content.length + headerBytes.toString().getBytes().length];
 
         System
                 .arraycopy(headerBytes.toString().getBytes(),
                         0,
                         bytes,
-                        1,
+                        0,
                         headerBytes.toString().getBytes().length
                 );
 
-        System.arraycopy(this.content,
+        System
+                .arraycopy(this.content,
                 0, bytes,
-                headerBytes.toString().getBytes().length + 1,
+                headerBytes.toString().getBytes().length,
                 this.content.length
         );
 
