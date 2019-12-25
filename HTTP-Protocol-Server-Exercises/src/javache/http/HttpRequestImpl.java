@@ -12,7 +12,6 @@ public class HttpRequestImpl implements HttpRequest {
     private String method;
     private String requestUrl;
 
-
     public HttpRequestImpl(String requestContent) {
         this.headers = new LinkedHashMap<>();
         this.bodyParameters = new LinkedHashMap<>();
@@ -110,6 +109,6 @@ public class HttpRequestImpl implements HttpRequest {
 
     @Override
     public boolean isResource() {
-        return this.requestUrl.contains("\\.");
+        return this.requestUrl.contains(".");
     }
 }

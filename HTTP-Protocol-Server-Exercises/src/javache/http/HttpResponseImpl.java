@@ -2,6 +2,7 @@ package javache.http;
 
 import javache.utils.StatusCodeMessage;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,16 +39,27 @@ public class HttpResponseImpl implements HttpResponse {
     @Override
     public byte[] getBytes() {
         String statusLine = this.getStatusLine();
-        String date = "Date: Sun, 18 Oct 2012 10:36:20 GMT";
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(statusLine);
         stringBuilder.append(LINE_SEPARATOR);
-        stringBuilder.append(date);
-        stringBuilder.append(LINE_SEPARATOR);
+
+        this.headers.forEach((k, v) -> stringBuilder.append(String.format("%s: %s", k, v)).append(LINE_SEPARATOR));
         stringBuilder.append(LINE_SEPARATOR);
 
-        return stringBuilder.toString().getBytes();
+        byte[] headersBytes = stringBuilder.toString().getBytes();
+        byte[] contentBytes = this.getContent();
+
+        if (contentBytes.length > 0) {
+            byte[] outputResponse = new byte[headersBytes.length + contentBytes.length];
+
+            System.arraycopy(headersBytes,0, outputResponse, 0, headersBytes.length);
+            System.arraycopy(contentBytes,0, outputResponse, headersBytes.length, contentBytes.length);
+
+            return outputResponse;
+        }
+
+        return headersBytes;
     }
 
     private String getStatusLine() {
