@@ -1,83 +1,66 @@
 package javache.http;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static javache.utils.WebConstants.LINE_SEPARATOR;
 
 public class HttpResponseImpl implements HttpResponse {
-
-    private HashMap<String, String> headers;
     private int statusCode;
+    private Map<String, String> headers;
+    private String contentString;
     private byte[] content;
 
     public HttpResponseImpl() {
-        this.setContent(new byte[0]);
-        this.headers = new HashMap<>();
+        this.headers = new LinkedHashMap<>();
+        this.content = new byte[0];
+        this.contentString = "";
     }
 
+    @Override
     public Map<String, String> getHeaders() {
         return Collections.unmodifiableMap(this.headers);
     }
 
+    @Override
     public int getStatusCode() {
         return this.statusCode;
     }
 
+    @Override
     public byte[] getContent() {
-        return this.content.clone();
+        return this.content;
     }
 
+    @Override
     public byte[] getBytes() {
-        StringBuilder headerBytes = new StringBuilder();
-        headerBytes.append(String.format("%s %d %s\r\n", "HTTP/1.1", this.statusCode, "OK"));
+        String statusLine = "HTTP/1.1 200 OK";
+        String date = "Date: Sun, 18 Oct 2012 10:36:20 GMT";
 
-        // if initial headers - add
-        for (Map.Entry<String, String> kvp : this.headers.entrySet()) {
-            headerBytes
-                    .append(
-                            String.format("%s: %s",
-                                    kvp.getKey(),
-                                    kvp.getValue()
-                            ))
-                    .append(System.lineSeparator());
-        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(statusLine);
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(date);
+        stringBuilder.append(LINE_SEPARATOR);
+        stringBuilder.append(LINE_SEPARATOR);
 
-        headerBytes
-                .append(String.format("Date: %s", new Date()))
-                .append(System.lineSeparator())
-                .append("Name: Petia")
-                .append(System.lineSeparator())
-                .append("Server: MyJavache/--1.0.0")
-                .append(System.lineSeparator())
-                .append(System.lineSeparator());
-
-        byte[] bytes = new byte[this.content.length + headerBytes.toString().getBytes().length];
-
-        System
-                .arraycopy(headerBytes.toString().getBytes(),
-                        0,
-                        bytes,
-                        0,
-                        headerBytes.toString().getBytes().length
-                );
-
-        System
-                .arraycopy(this.content,
-                0, bytes,
-                headerBytes.toString().getBytes().length,
-                this.content.length
-        );
-
-        return bytes;
+        return stringBuilder.toString().getBytes();
     }
 
+    @Override
     public void setStatusCode(int statusCode) {
         this.statusCode = statusCode;
     }
 
+    @Override
     public void setContent(byte[] content) {
-        this.content = content;
+        this.content = content.clone();
+        this.contentString += content.toString();
     }
 
+    @Override
     public void addHeader(String header, String value) {
-        this.headers.putIfAbsent(header.trim(), value.trim());
+        this.headers.putIfAbsent(header, value);
     }
 }

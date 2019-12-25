@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.FutureTask;
 
-import static javache.WebConstants.*;
+import static javache.utils.WebConstants.*;
 
 public class Server {
     // connection controller

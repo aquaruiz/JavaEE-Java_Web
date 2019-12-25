@@ -1,92 +1,114 @@
 package javache.http;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static javache.WebConstants.LINE_SEPARATOR;
+import static javache.utils.WebConstants.LINE_SEPARATOR;
 
 public class HttpRequestImpl implements HttpRequest {
+    private Map<String, String> headers;
+    private Map<String, String> bodyParameters;
     private String method;
     private String requestUrl;
-    HashMap<String, String> headers; // May be an ordered map?
-    HashMap<String, String> bodyParameters;
+
 
     public HttpRequestImpl(String requestContent) {
+        this.headers = new LinkedHashMap<>();
+        this.bodyParameters = new LinkedHashMap<>();
         this.initializeRequest(requestContent);
     }
 
-    // GET /hello.htm HTTP/1.1
-    //User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
-    //Host: www.tutorialspoint.com
-    //Accept-Language: en-us
-    //Accept-Encoding: gzip, deflate
-    //Connection: Keep-Alive
-
     private void initializeRequest(String requestContent) {
-        this.headers = new HashMap<String, String>();
-        this.bodyParameters = new HashMap<String, String>();
+        String[] arrRequest = requestContent.split(LINE_SEPARATOR);
+        String[] firstRow = arrRequest[0].split("\\s+");
 
-        String[] data = requestContent.split(LINE_SEPARATOR);
-        String[] methodUrl = data[0].split(" ");
-        this.setMethod(methodUrl[0].trim());
-        this.setRequestUrl(methodUrl[1].trim());
+        String method = firstRow[0];
+        this.setMethod(method);
+        String requestUrl = firstRow[1];
+        this.setRequestUrl(requestUrl);
 
-        int index = 1;
+        Map<String, String> headers = extractHeaders(arrRequest);
+        headers.forEach(this::addHeader);
 
-        while (data.length > index && data[index].trim() != null){
-            String[] headerData = data[index].split(": ");
-            this.addHeader(headerData[0], headerData[1]);
-            index++;
-        }
-
-        index++;
-
-        while (index < data.length){
-            String[] parameterData = data[index].split("&");
-
-            Arrays.stream(parameterData).forEach(p -> {
-                String[] parameter = p.split("=");
-                this.addBodyParameter(parameter[0], parameter[1]);
-            });
-
-            index++;
+        if (method.equals("POST")) {
+            Map<String, String> bodyParameters = extractBodyParameters(arrRequest);
+            bodyParameters.forEach(this::addBodyParameter);
         }
     }
 
+    private Map<String, String> extractBodyParameters(String[] arrRequest) {
+        Map<String, String> bodyParams = new LinkedHashMap<>();
+
+        // may be it's always the LAST index but not sure ?!
+        String[] postBody = arrRequest[arrRequest.length - 1].split("\\&");
+
+        for (int i = 0; i < postBody.length; i++) {
+            String[] row = postBody[i].split("=");
+            String key = row[0];
+            String value = row[1];
+            bodyParams.putIfAbsent(key, value);
+        }
+
+        return bodyParams;
+    }
+
+    private Map<String, String> extractHeaders(String[] arrRequest) {
+        Map<String, String> headers = new LinkedHashMap<>();
+        int index = 1;
+
+        while (index < arrRequest.length && !arrRequest[index].equals("")) {
+            String[] row = arrRequest[index].split(": ");
+            String key = row[0];
+            String value = row[1];
+            headers.putIfAbsent(key, value);
+            ++index;
+        }
+
+        return headers;
+    }
+
+    @Override
     public Map<String, String> getHeaders() {
         return Collections.unmodifiableMap(this.headers);
     }
 
+    @Override
     public Map<String, String> getBodyParameters() {
         return Collections.unmodifiableMap(this.bodyParameters);
     }
 
+    @Override
     public String getMethod() {
         return this.method;
     }
 
+    @Override
     public void setMethod(String method) {
-        this.method = method.trim().toUpperCase();
+        this.method = method;
     }
 
+    @Override
     public String getRequestUrl() {
         return this.requestUrl;
     }
 
+    @Override
     public void setRequestUrl(String requestUrl) {
-        this.requestUrl = requestUrl.trim();
+        this.requestUrl = requestUrl;
     }
 
+    @Override
     public void addHeader(String header, String value) {
-        this.headers.putIfAbsent(header.trim(), value.trim());
+        this.headers.putIfAbsent(header, value);
     }
 
+    @Override
     public void addBodyParameter(String parameter, String value) {
-        this.bodyParameters.putIfAbsent(parameter.trim(), value.trim());
+        this.bodyParameters.putIfAbsent(parameter, value);
     }
 
+    @Override
     public boolean isResource() {
         return this.requestUrl.contains("\\.");
     }

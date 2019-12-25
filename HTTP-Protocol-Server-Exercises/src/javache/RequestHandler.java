@@ -5,11 +5,7 @@ import javache.http.HttpRequestImpl;
 import javache.http.HttpResponse;
 import javache.http.HttpResponseImpl;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Map;
+import java.time.LocalDate;
 
 public class RequestHandler {
     private HttpRequest httpRequest;
@@ -27,44 +23,8 @@ public class RequestHandler {
     }
 
     private void constructHttpResponse() {
-//        try {
-        File file;
-
-        if (this.httpRequest.isResource()) {
-            file = new File("src/resources/assets" + this.httpRequest.getRequestUrl());
-        } else {
-            file = new File("src/resources/pages" + this.httpRequest.getRequestUrl() + ".html");
-        }
-
-        this.httpResponse.setStatusCode(200);
-        this.httpResponse.addHeader("Content-Type", "text/html");
-
-        
-        //
-//            for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
-//                this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
-//            }
-//
-//            this.httpResponse.setStatusCode(WebConstants.OK);
-//            this.addMimeType();
-//
-//            this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
-//            System.out.println();
-//        } catch (IOException e) {
-//            this.httpResponse = new HttpResponseImpl();
-//            File file = new File("src/resources/pages/not-found.html");
-//
-//            for (Map.Entry<String, String> stringStringEntry : this.httpRequest.getHeaders().entrySet()) {
-//                this.httpResponse.addHeader(stringStringEntry.getKey(), stringStringEntry.getValue());
-//            }
-//
-//            try {
-//                this.httpResponse.setContent(Files.readAllBytes(Paths.get(file.getPath())));
-//                this.httpResponse.setStatusCode(WebConstants.NOT_FOUND);
-//            } catch (IOException e1) {
-//                e1.printStackTrace();
-//            }
-//        }
+        this.httpResponse.setStatusCode(404);
+        this.httpResponse.addHeader("Date", String.valueOf(LocalDate.now()));
     }
 
     private void addMimeType() {

@@ -1,4 +1,4 @@
-package javache;
+package javache.utils;
 
 public enum StatusCodeMessage {
     OK (200),

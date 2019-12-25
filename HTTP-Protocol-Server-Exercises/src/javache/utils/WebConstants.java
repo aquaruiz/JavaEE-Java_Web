@@ -1,4 +1,4 @@
-package javache;
+package javache.utils;
 
 public class WebConstants {
     public static final int SOCKET_TIMEOUT_MILLISECONDS = 10000;

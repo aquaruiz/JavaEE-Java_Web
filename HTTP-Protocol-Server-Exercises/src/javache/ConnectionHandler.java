@@ -3,9 +3,7 @@ package javache;
 import javache.io.Reader;
 import javache.io.Writer;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class ConnectionHandler extends Thread {
@@ -34,11 +32,23 @@ public class ConnectionHandler extends Thread {
     public void run() {
         try {
 
-            // TODO add endless loop
+//            while (true) {
             String requestContent = Reader.readAllLines(this.clientSocketInputStream);
-            byte[] responseContent = this.requestHandler.handleRequest(requestContent);
-            Writer.writeBytes(responseContent, this.clientSocketOutputStream);
-
+            if (requestContent.length() > 1) {
+                byte[] responseContent = this.requestHandler.handleRequest(requestContent);
+                Writer.writeBytes(responseContent, this.clientSocketOutputStream);
+            }
+//                String resp = "HTTP/1.1 200 OK\r\n" +
+//                        "Content-Type: text/html\r\n\r\n" +
+//                        "<html>\n" +
+//                        "<body>\n" +
+//                        "<h1>Hello, World!</h1>\n" +
+//                        "</body>\n" +
+//                        "</html>";
+//                BufferedWriter myWriter = new BufferedWriter(new OutputStreamWriter(this.clientSocketOutputStream));
+//                myWriter.write(resp);
+//                myWriter.flush();
+//            }
             this.clientSocketInputStream.close();
             this.clientSocketOutputStream.close();
             this.clientSocket.close();

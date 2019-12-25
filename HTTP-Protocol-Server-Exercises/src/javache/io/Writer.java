@@ -3,6 +3,7 @@ package javache.io;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 public final class Writer {
     private Writer () {}
@@ -11,5 +12,6 @@ public final class Writer {
         DataOutputStream buffer = new DataOutputStream(outputStream);
 
         buffer.write(byteData);
+        buffer.flush();
     }
 }
