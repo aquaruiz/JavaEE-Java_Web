@@ -23,7 +23,7 @@ public class RequestHandler {
     }
 
     private void constructHttpResponse() {
-        this.httpResponse.setStatusCode(404);
+        this.httpResponse.setStatusCode(318);
         this.httpResponse.addHeader("Date", String.valueOf(LocalDate.now()));
     }
 

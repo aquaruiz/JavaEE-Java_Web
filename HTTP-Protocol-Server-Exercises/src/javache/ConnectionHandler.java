@@ -33,11 +33,12 @@ public class ConnectionHandler extends Thread {
         try {
 
 //            while (true) {
-            String requestContent = Reader.readAllLines(this.clientSocketInputStream);
-            if (requestContent.length() > 1) {
-                byte[] responseContent = this.requestHandler.handleRequest(requestContent);
-                Writer.writeBytes(responseContent, this.clientSocketOutputStream);
-            }
+                String requestContent = Reader.readAllLines(this.clientSocketInputStream);
+                if (requestContent.length() > 1) {
+                    byte[] responseContent = this.requestHandler.handleRequest(requestContent);
+                    Writer.writeBytes(responseContent, this.clientSocketOutputStream);
+                }
+//            }
 //                String resp = "HTTP/1.1 200 OK\r\n" +
 //                        "Content-Type: text/html\r\n\r\n" +
 //                        "<html>\n" +
@@ -49,9 +50,9 @@ public class ConnectionHandler extends Thread {
 //                myWriter.write(resp);
 //                myWriter.flush();
 //            }
-            this.clientSocketInputStream.close();
-            this.clientSocketOutputStream.close();
-            this.clientSocket.close();
+//            this.clientSocketInputStream.close();
+//            this.clientSocketOutputStream.close();
+//            this.clientSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

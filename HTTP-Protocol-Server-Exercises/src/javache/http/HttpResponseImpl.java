@@ -1,5 +1,7 @@
 package javache.http;
 
+import javache.utils.StatusCodeMessage;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,7 +37,7 @@ public class HttpResponseImpl implements HttpResponse {
 
     @Override
     public byte[] getBytes() {
-        String statusLine = "HTTP/1.1 200 OK";
+        String statusLine = this.getStatusLine();
         String date = "Date: Sun, 18 Oct 2012 10:36:20 GMT";
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -46,6 +48,11 @@ public class HttpResponseImpl implements HttpResponse {
         stringBuilder.append(LINE_SEPARATOR);
 
         return stringBuilder.toString().getBytes();
+    }
+
+    private String getStatusLine() {
+        String line = String.format("HTTP/1.1 %d %s", this.statusCode, StatusCodeMessage.valueOf(this.statusCode));
+        return line;
     }
 
     @Override
