@@ -1,15 +1,13 @@
 package javache;
 
-import javache.http.HttpRequest;
-import javache.http.HttpRequestImpl;
-import javache.http.HttpResponse;
-import javache.http.HttpResponseImpl;
+import javache.http.*;
 import javache.utils.StatusCodeMessage;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static javache.utils.WebConstants.*;
@@ -18,20 +16,26 @@ public class RequestHandler {
     private static final String HTML_EXTENSION_AND_SEPARATOR = ".html";
     private HttpRequest httpRequest;
     private HttpResponse httpResponse;
+    private HttpSessionStorage sessionStorage;
 
-    protected RequestHandler() {
+    protected RequestHandler(HttpSessionStorage httpSessionStorage) {
+        this.sessionStorage = httpSessionStorage;
     }
 
     public byte[] handleRequest(String requestContent) {
         this.httpRequest = new HttpRequestImpl(requestContent);
         this.httpResponse = new HttpResponseImpl();
 
+        byte[] result = null;
+
         if (this.httpRequest.getMethod().equals("GET")) {
-            return this.processGetRequest();
+            result = this.processGetRequest();
         }
 
+        this.sessionStorage.refreshSessions();
+
 //        this.constructHttpResponse();
-        return this.httpResponse.getBytes();
+        return result;
     }
 
     private void constructHttpResponse() {
@@ -83,12 +87,6 @@ public class RequestHandler {
         if (fileBytes.length > 0) {
             this.httpResponse.setContent(fileBytes);
         }
-
-//        if (this.httpRequest.getMethod().equals("GET")){
-//             // TODO
-//        } else if (this.httpRequest.getMethod().equals("POST")) {
-//             // TODO
-//        }
     }
 
     private void addMimeType(String type) {
@@ -108,6 +106,13 @@ public class RequestHandler {
 
     private byte[] ok(byte[] content) {
         this.httpResponse.setStatusCode(StatusCodeMessage.OK.getCode());
+        this.httpResponse.setContent(content);
+        return this.httpResponse.getBytes();
+    }
+
+    private byte[] redirect(byte[] content, String location) {
+        this.httpResponse.setStatusCode(StatusCodeMessage.MOVED_TEMPORARILY.getCode());
+        this.httpResponse.addHeader("Location", location);
         this.httpResponse.setContent(content);
         return this.httpResponse.getBytes();
     }
@@ -143,7 +148,6 @@ public class RequestHandler {
         } catch (IOException e) {
             return this.internalServerError(("Something went wrong. :(").getBytes());
         }
-
 
         this.httpResponse.addHeader("Content-Type", this.getMimeType(file));
         this.httpResponse.addHeader("Content-Length", result.length + "");
@@ -205,8 +209,37 @@ public class RequestHandler {
                 || this.httpRequest.getRequestUrl().equals("/")) {
 
             return this.processPageRequest("/index");
-        } else if (this.httpRequest.getRequestUrl().equals("/login")){
+        } else if (this.httpRequest.getRequestUrl().equals("/login")) {
+
+            HttpSession session = new HttpSessionImpl();
+            session.addAttribute("username", "az");
+
+            this.sessionStorage.addSession(session);
+
+            this.httpResponse.addCookie("Session-id", session.getId());
             return this.processPageRequest(this.httpRequest.getRequestUrl());
+        } else if (this.httpRequest.getRequestUrl().equals("/logout")) {
+
+            if (!this.httpRequest.getCookies().containsKey("Session-id")) {
+                return this.redirect("You have to log in to access this route".getBytes(), "/");
+            }
+
+            String sessionId = this.httpRequest.getCookies().get("Session-id").getValue();
+            this.sessionStorage.getById(sessionId).invalidate();
+
+            this.httpResponse.addCookie("Session-id", "deleted; expires=Thu, 01 Jan 1970 00:00:00 GMT");
+            return this.ok("Successfully expired!".getBytes());
+        } else if (this.httpRequest.getRequestUrl().contains("forbidden")) {
+
+            if (!this.httpRequest.getCookies().containsKey("Session-id")){
+                return this.redirect("You have to log in to access this route".getBytes(), "/");
+            }
+
+            String sessionId = this.httpRequest.getCookies().get("Session-id").getValue();
+            HttpSession session = this.sessionStorage.getById(sessionId);
+            String username = session.getAttributes().get("username").toString();
+
+            return this.ok((username + ", YOU are LOGGED in").getBytes());
         }
 
         return this.processResourceRequest();

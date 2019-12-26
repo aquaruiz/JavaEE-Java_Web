@@ -9,6 +9,7 @@ public enum StatusCodeMessage {
     MULTIPLE_CHOICES (300),
     MOVED_PERMANENTLY (301),
     FOUND (302),
+    MOVED_TEMPORARILY (303),
     NOT_MODIFIED (304),
     TEMPORARY_REDIRECT (307),
     I_AM_A_TEAPOT (318),
